@@ -1,3 +1,5 @@
+package com.company;
+
 public class AVLTree {
     private class AVLNode {
         private int value;
@@ -13,15 +15,17 @@ public class AVLTree {
     private AVLNode root;
 
     public void insert(int value) {
-        AVLNode newNode = new AVLNode(value);
-
-        if(root == null) {
-            root = newNode;
-            return;
-        }
-
-
+        root = insert(root, value);
     }
 
+    private AVLNode insert(AVLNode root, int value) {
+        if (root == null) return new AVLNode(value);
 
+        if (value < root.value)
+            root.leftChild = insert(root.leftChild, value);
+        else
+            root.rightChild = insert(root.rightChild, value);
+
+        return root;
+    }
 }
