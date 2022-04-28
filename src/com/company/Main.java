@@ -9,6 +9,9 @@ public class Main {
         hp.insert(12);
         hp.insert(13);
         hp.insert(14);
+        hp.insert(22);
+
+        hp.remove();
 
         hp.print();
     }
