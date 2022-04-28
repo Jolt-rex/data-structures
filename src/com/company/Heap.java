@@ -10,19 +10,34 @@ public class Heap {
     }
 
     public void insert(int value) {
-        // check if we need to resize first
-        if (heap.length <= size)
-            resizeHeap();
+        if(isFull())
+            throw new IllegalStateException();
 
         heap[size++] = value;
+
+        bubbleUp();
     }
 
-    private void resizeHeap() {
-        int[] newHeap = new int[size * 2];
-        for(int i = 0; i < size * 2; i++) {
-            newHeap[i] = heap[i];
+    public boolean isFull() {
+        return size == heap.length;
+    }
+
+    private void bubbleUp() {
+        var index = size - 1;
+        while(index > 0 && heap[index] > heap[parent(index)]) {
+            swap(index, parent(index));
+            index = parent(index);
         }
-        heap = newHeap;
+    }
+
+    private int parent(int index) {
+        return (index - 1) / 2;
+    }
+
+    private void swap(int first, int second) {
+        var temp = heap[first];
+        heap[first] = heap[second];
+        heap[second] = temp;
     }
 
     public void print() {
