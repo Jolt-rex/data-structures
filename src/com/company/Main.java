@@ -1,18 +1,11 @@
 package com.company;
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
-        Heap hp = new Heap(10);
-
-        hp.insert(10);
-        hp.insert(12);
-        hp.insert(13);
-        hp.insert(14);
-        hp.insert(22);
-
-        hp.remove();
-
-        hp.print();
+        int[] numbers = { 5, 3, 8, 4, 1, 2 };
+        MaxHeap.heapify(numbers);
+        System.out.println(Arrays.toString(numbers));
     }
 }
