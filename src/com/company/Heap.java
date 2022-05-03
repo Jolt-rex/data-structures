@@ -109,6 +109,13 @@ public class Heap {
         heap[second] = temp;
     }
 
+    public int max() {
+        if(isEmpty())
+            throw new IllegalStateException();
+
+        return heap[0];
+    }
+
     public void print() {
         for(int i = 0; i < this.size; i++) {
             System.out.println(heap[i]);
