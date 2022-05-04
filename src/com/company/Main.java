@@ -5,9 +5,11 @@ public class Main {
     public static void main(String[] args) {
         var trie = new Trie();
 
-        trie.insert("cat");
-        trie.insert("can");
+        trie.insert("care");
+        trie.insert("car");
 
-        System.out.println("End");
+        trie.remove("care");
+        System.out.println(trie.contains("care"));
+        System.out.println(trie.contains("car"));
     }
 }
