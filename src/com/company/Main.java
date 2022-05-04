@@ -15,5 +15,8 @@ public class Main {
         graph.addEdge("Jolt", "Billy");
 
         graph.print();
+
+        graph.removeEdge("Jolt", "Hannah");
+        graph.print();
     }
 }
