@@ -7,9 +7,13 @@ public class Main {
 
         trie.insert("care");
         trie.insert("car");
+        trie.insert("cart");
+        trie.insert("cartage");
+        trie.insert("caramel");
+        trie.insert("cad");
 
-        trie.remove("care");
-        System.out.println(trie.contains("care"));
-        System.out.println(trie.contains("car"));
+        var words = trie.findWords("cart");
+
+        System.out.println(words);
     }
 }
