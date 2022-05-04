@@ -3,17 +3,17 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        var trie = new Trie();
+        var graph = new Graph();
 
-        trie.insert("care");
-        trie.insert("car");
-        trie.insert("cart");
-        trie.insert("cartage");
-        trie.insert("caramel");
-        trie.insert("cad");
+        graph.addNode("Billy");
+        graph.addNode("Jolt");
+        graph.addNode("Hannah");
 
-        var words = trie.findWords("cart");
+        graph.print();
 
-        System.out.println(words);
+        graph.addEdge("Jolt", "Hannah");
+        graph.addEdge("Jolt", "Billy");
+
+        graph.print();
     }
 }
