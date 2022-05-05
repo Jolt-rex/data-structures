@@ -72,6 +72,29 @@ public class Graph {
         }
     }
 
+    public void traverseDepthFirstIterative(String label) {
+        var node = nodes.get(label);
+        if(node == null) return;
+
+        HashSet<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        while(!stack.isEmpty()) {
+            var current = stack.pop();
+
+            if(visited.contains(current)) continue;
+
+            System.out.println(current.label);
+            visited.add(current);
+
+            for(var neighbour : adjacencyList.get(current)) {
+                if(!visited.contains(neighbour))
+                    stack.push(neighbour);
+            }
+        }
+    }
+
     public void print() {
         for(var source : adjacencyList.keySet()) {
             var targets = adjacencyList.get(source);

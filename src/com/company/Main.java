@@ -14,6 +14,7 @@ public class Main {
         graph.addEdge("B", "D");
         graph.addEdge("D", "C");
 
-        graph.traverseDepthFirst("Z");
+        graph.traverseDepthFirst("A");
+        graph.traverseDepthFirstIterative("A");
     }
 }
