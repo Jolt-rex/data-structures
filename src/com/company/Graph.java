@@ -43,7 +43,6 @@ public class Graph {
 
         adjacencyList.remove(node);
         nodes.remove(label);
-
     }
 
     public void removeEdge(String from, String to) {
@@ -54,6 +53,23 @@ public class Graph {
             return;
 
         adjacencyList.get(fromNode).remove(toNode);
+    }
+
+    public void traverseDepthFirst(String label) {
+        var node = nodes.get(label);
+        if(node == null)
+            return;
+
+        traverseDepthFirst(node, new HashSet<>());
+    }
+
+    private void traverseDepthFirst(Node root, Set<Node> visited) {
+        System.out.println(root.label);
+        visited.add(root);
+        for(var neighbour : adjacencyList.get(root)) {
+            if(!visited.contains(neighbour))
+                traverseDepthFirst(neighbour, visited);
+        }
     }
 
     public void print() {
