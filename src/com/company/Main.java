@@ -7,14 +7,15 @@ public class Main {
 
         graph.addNode("A");
         graph.addNode("B");
-        graph.addNode("C");
-        graph.addNode("D");
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("B", "D");
-        graph.addEdge("D", "C");
+        graph.addNode("P");
+        graph.addNode("X");
 
-        graph.traverseDepthFirst("A");
-        graph.traverseDepthFirstIterative("A");
+        graph.addEdge("X", "A");
+        graph.addEdge("X", "B");
+        graph.addEdge("A", "P");
+        graph.addEdge("B", "P");
+
+        var list = graph.topologicalSort();
+        System.out.println(list);
     }
 }

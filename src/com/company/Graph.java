@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.Array;
 import java.util.*;
 
 public class Graph {
@@ -88,11 +89,57 @@ public class Graph {
             System.out.println(current.label);
             visited.add(current);
 
-            for(var neighbour : adjacencyList.get(current)) {
+            for(var neighbour : adjacencyList.get(current))
                 if(!visited.contains(neighbour))
                     stack.push(neighbour);
-            }
         }
+    }
+
+    public void traverseBreadthFirst(String label) {
+        var node = nodes.get(label);
+        if(node == null) return;
+
+        HashSet<Node> visited = new HashSet<>();
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while(!queue.isEmpty()) {
+            var current = queue.poll();
+
+            if(visited.contains(current)) continue;
+
+            System.out.println(current.label);
+            visited.add(current);
+
+            for(var neighbour : adjacencyList.get(current))
+                if(!visited.contains(neighbour))
+                    queue.add(neighbour);
+        }
+    }
+
+    public List<String> topologicalSort() {
+        Stack<Node> stack = new Stack<>();
+        Set<Node> visited = new HashSet<>();
+
+        for(var node : nodes.values())
+            topologicalSort(node, visited, stack);
+
+        List<String> sorted = new ArrayList<>();
+        while(!stack.empty())
+            sorted.add(stack.pop().label);
+
+        return sorted;
+    }
+
+    private void topologicalSort(Node node, Set<Node> visited, Stack<Node> stack) {
+        if(visited.contains(node)) return;
+
+        visited.add(node);
+
+        for(var neighbour : adjacencyList.get(node))
+            topologicalSort(neighbour, visited, stack);
+
+        stack.push(node);
     }
 
     public void print() {
