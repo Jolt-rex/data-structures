@@ -3,18 +3,12 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        var graph = new Graph();
+        var graph = new WeightedGraph();
 
         graph.addNode("A");
         graph.addNode("B");
-        graph.addNode("P");
-        graph.addNode("X");
+        graph.addEdge("A", "B", 5);
 
-        graph.addEdge("X", "A");
-        graph.addEdge("X", "B");
-        graph.addEdge("A", "P");
-        graph.addEdge("B", "P");
-
-        System.out.println(graph.hasCycle());
+        graph.print();
     }
 }
