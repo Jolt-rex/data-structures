@@ -15,7 +15,6 @@ public class Main {
         graph.addEdge("A", "P");
         graph.addEdge("B", "P");
 
-        var list = graph.topologicalSort();
-        System.out.println(list);
+        System.out.println(graph.hasCycle());
     }
 }
